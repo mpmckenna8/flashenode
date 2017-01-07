@@ -1,7 +1,7 @@
 # Node Flaschen Taschen thing
 
 Trying to make a simple thing for people to send stuff to the big light thing at
-NB.
+Noisebridge.
 
 see: https://github.com/hzeller/flaschen-taschen
 
@@ -18,6 +18,13 @@ installed already.
 But i don't think npm will let you install the package without [imagemagick](https://www.imagemagick.org/script/index.php) so
 make sure you have that installed.
 
+So you can:
+
+  npm install flaschenode
+
+And if there are no errors you should be ready to start interacting with the
+flaschen-taschen.
+
 Basically it gives you an object and you create a datagram as a Buffer as the
 data attribute and then send it to the flaschen-taschen.
 
@@ -32,7 +39,11 @@ var flaschen = require('flaschenode');
 var imagemagick = require('imagemagick-native');
 var fs = require('fs')
 var file = "./node_modules/flaschenode/elephant.jpeg"
-//flaschen.hostname = 'localhost'
+
+//flaschen.hostname = 'localhost';
+// layers go from 1-15 so uncomment the following and you'll be on top
+//flaschen.layer = 15;
+
 const footer = new Buffer(flaschen.footerString())
 
 var srcData = fs.readFileSync(file);
