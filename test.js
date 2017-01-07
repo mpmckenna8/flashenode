@@ -1,6 +1,6 @@
+var nb = require('./index.js');
 var imagemagick = require('imagemagick-native');
 var fs = require('fs')
-var nb = require('./index.js');
 var file = "./elephant.jpeg"
 //nb.hostname = 'localhost'
 const footer = new Buffer(nb.footerString)
