@@ -1,22 +1,25 @@
 // simple example to make the flaschen taschen like a flashlight
 
-var nb = require('../index.js');
+var flaschen = require('../index.js');
 
-//nb.init();
+// uncomment if sending to local server
+//flaschen.hostname = "localhost"
 
-var datb = new Buffer( nb.headerString().length+ nb.footerString.length + nb.height* nb.width*3)
-nb.data = datb;
+flaschen.layer = 10;
 
-datb.write(nb.headerString(), 0);
-var starfoo = datb.length - nb.footerString.length
-datb.write(nb.footerString, starfoo);
+var datb = new Buffer( flaschen.headerString().length+ flaschen.footerString.length + flaschen.height* flaschen.width*3)
+flaschen.data = datb;
+
+datb.write(flaschen.headerString(), 0);
+var starfoo = datb.length - flaschen.footerString().length
+datb.write(flaschen.footerString(), starfoo);
 
 
 var color = [255, 255, 255];
-for(i=0; i < nb.width; i++){
-  for(j=0; j < nb.height; j++){
-    nb.set(i, j, color)
+for(i=0; i < flaschen.width; i++){
+  for(j=0; j < flaschen.height; j++){
+    flaschen.set(i, j, color)
   }
 }
 
-nb.show();
+flaschen.show();

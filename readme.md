@@ -15,6 +15,9 @@ For some examples of how to use this module look in the tests directory, I think
 the tests/singular.js file should even run if you don't have imagemagick
 installed already.
 
+But i don't think npm will let you install the package without [imagemagick](https://www.imagemagick.org/script/index.php) so
+make sure you have that installed.
+
 Basically it gives you an object and you create a datagram as a Buffer as the
 data attribute and then send it to the flaschen-taschen.
 
@@ -25,12 +28,12 @@ So to just send a simple image:
 
 ```javascript
 
-var nb = require('flaschenode');
+var flaschen = require('flaschenode');
 var imagemagick = require('imagemagick-native');
 var fs = require('fs')
 var file = "./node_modules/flaschenode/elephant.jpeg"
-//nb.hostname = 'localhost'
-const footer = new Buffer(nb.footerString)
+//flaschen.hostname = 'localhost'
+const footer = new Buffer(flaschen.footerString())
 
 var srcData = fs.readFileSync(file);
 
@@ -45,9 +48,9 @@ var totlen = footer.length + content.length;
 
 var allcon = Buffer.concat([content, footer], totlen)
 
-nb.data = allcon;
+flaschen.data = allcon;
 
 // Send the data to the flaschen-taschen
-nb.show()
+flaschen.show()
 
 ```
