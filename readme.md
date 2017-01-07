@@ -23,7 +23,7 @@ copy one of the example scripts into your directory and hack on it.
 
 So to just send a simple image:
 
-'''
+```javascript
 
 var nb = require('flaschenode');
 var imagemagick = require('imagemagick-native');
@@ -50,4 +50,4 @@ nb.data = allcon;
 // Send the data to the flaschen-taschen
 nb.show()
 
-'''
+```
