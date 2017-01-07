@@ -1,5 +1,6 @@
-var nb = require('./index.js');
+// simple example to make the flaschen taschen like a flashlight
 
+var nb = require('../index.js');
 
 nb.init();
 
@@ -17,10 +18,6 @@ for(i=0; i < nb.width; i++){
   for(j=0; j < nb.height; j++){
   //  console.log(i)
     nb.set(i, j, color)
-//    var offset = (i+j * width) * 3 + nb.headerString.length;
-  //  datb[offset ] = 55;
-    //datb[offset+1 ] = 255;
-//    datb[offset+2 ] = 00;
 
   }
 }
