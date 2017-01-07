@@ -1,0 +1,31 @@
+{
+  "name": "flaschenode",
+  "version": "0.0.1",
+  "description": "Makes it easy for people who like js to interact with the flaschen-taschen",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "caption": "^0.1.1",
+    "imagemagick-native": "^1.9.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpmckenna8/flashenode.git"
+  },
+  "keywords": [
+    "udp",
+    "flaschen-taschen"
+  ],
+  "author": "@mpmckenna8 mpmckenna8@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mpmckenna8/flashenode/issues"
+  },
+  "homepage": "https://github.com/mpmckenna8/flashenode#readme"
+}
