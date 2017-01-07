@@ -28,7 +28,7 @@ So to just send a simple image:
 var nb = require('flaschenode');
 var imagemagick = require('imagemagick-native');
 var fs = require('fs')
-var file = ".node_modules/flaschenode/elephant.jpeg"
+var file = "./node_modules/flaschenode/elephant.jpeg"
 //nb.hostname = 'localhost'
 const footer = new Buffer(nb.footerString)
 
