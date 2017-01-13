@@ -1,20 +1,20 @@
 var nb = require('../index.js');
-//nb.hostname = "localhost"
-nb.width = 5
+nb.hostname = "localhost"
 
 nb.init();
+nb.width = 5
 
 //nb.height = 15;
 //nb.width = 5;
 //nb.writeHeader();
 //nb.headerString;
 
-var datb = new Buffer( nb.headerString().length+ nb.footerString.length + nb.height* nb.width*3)
+var datb = new Buffer( nb.headerString().length+ nb.footerString().length + nb.height* nb.width*3)
 nb.data = datb;
 
 datb.write(nb.headerString(), 0);
-var starfoo = datb.length - nb.footerString.length
-datb.write(nb.footerString, starfoo);
+var starfoo = datb.length - nb.footerString().length
+datb.write(nb.footerString(), starfoo);
 
 //nb.data = datb;
 
@@ -31,10 +31,11 @@ for(i=0; i < nb.width; i++){
   }
 }
 
-nb.show();
 
-
-colors = [[255,0,0],[0,255,0],[0,0,255],[255, 255, 0]]
+//var dat = Buffer.concat([ata, footer], footer.length+ ata.length)
+//nb.set(0,28, [255,0,0]);
+//nb.data = ata;
+colors = [[255,0,0],[0,255,0],[0,0,255]]
 
 var xred = 0;
 var yred = 0;
@@ -50,7 +51,7 @@ function drawpoint(){
     yred = yred+1;
     if(yred >=nb.height){
        yred = 0;
-       (color < colors.length-2) ? ( color = color + 2 ): color=0;
+       (color < colors.length-1) ? ( color = color + 2 ): color=0;
 
 
 
@@ -60,6 +61,6 @@ function drawpoint(){
   nb.show();
 
 }
-
 setInterval(drawpoint, 30)
 //console.log(nb.data)
+nb.show();
