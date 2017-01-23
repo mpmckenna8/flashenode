@@ -2,14 +2,14 @@ var imagemagick = require('imagemagick-native');
 var fs = require('fs')
 var nb = require('../index.js');
 
-nb.hostname = 'localhost'
+//nb.hostname = 'localhost'
 // so it looks like you have to break the gif down on the commandline with convert command:
 // convert doggy.gif split/doo.jpeg
 
 var fileindex = 0;
 var fimax = 23;
 
-var gifdir = './split/doo-'
+var gifdir = './fire/doo-'
 
 var buffers = [];
 
