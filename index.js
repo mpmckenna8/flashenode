@@ -1,5 +1,4 @@
 const dgram = require('dgram');
-const imagemagick = require('imagemagick-native');
 
 var startBuff = new Buffer(  8000)
 
