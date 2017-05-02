@@ -1,13 +1,17 @@
+// real simple example not really a test of where if it works it sends an image
+// to the flashentashen
+// to run this requires imagemagick-native to be installed
+
 var flaschen = require('./index.js');
 var imagemagick = require('imagemagick-native');
 var fs = require('fs')
-var file = "./elephant.jpeg"
+var file = "elephant.jpeg" //elephant.jpeg"
 
 //flaschen.hostname = 'localhost'
 // uncomment to sent to the highest layer
-// flaschen.layer = 15
+ flaschen.layer = 15
 
-const footer = new Buffer(flaschen.footerString())
+const footer = Buffer.from(flaschen.footerString())
 
 // read the picture into a buffer.
 var srcData = fs.readFileSync(file);

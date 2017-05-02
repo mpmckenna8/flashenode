@@ -1,19 +1,24 @@
 const dgram = require('dgram');
 
-var startBuff = new Buffer(  8000)
+var startBuff = Buffer.alloc(8000)
 
+// our thing is really just a big object with lots of props
 module.exports = {
   port: 1337,
   hostname: 'ft.noise',
   height: 35,
   width: 45,
   layer: 11,
+  // a function which will return a nice headerstring based on the currently set
+  // width and height
   headerString: function(){
     return "P6\n" + this.width + " " +  this.height + "\n" + "255\n";
   },
+  // function which returns a footer string using the layer property
   footerString: function(){
       return '\n0\n0\n' + this.layer + '\n';
     },
+
   footbuf: function(){
     return new Buffer(footerString())
   },
@@ -48,6 +53,7 @@ module.exports = {
       format: 'ppm'
     })
     this.data = content;
+
   },
   init: function(){
     //this.data = new Buffer(  this.headlen + this.height * this.width* 3 );
@@ -58,7 +64,9 @@ module.exports = {
     this.data.write(this.headerString());
   },
   // set should take the x and y of the pixel and the color as 3 value array
+  // set's the bits in the buffer to be sent to the given color array
   set: function(x,y, color){
+
     var x = x;
     var y = y;
 
