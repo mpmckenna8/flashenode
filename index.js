@@ -22,15 +22,16 @@ module.exports = {
   footbuf: function(){
     return new Buffer(footerString())
   },
+  writeHeader: function(){
+    this.data.write(this.headerString());
+  },
   headlen: function(){
     return this.headerString().length;
   },
   data: startBuff,
   show: function(){
     const client = dgram.createSocket('udp4');
-
     // decided to just have the data assigned when this function is called
-    //var hostname = this.hostname;
   //  this.data.write(this.footerString, footoff)
     console.log('our data', this.data);
 
@@ -60,9 +61,7 @@ module.exports = {
     this.writeHeader();
 
   },
-  writeHeader: function(){
-    this.data.write(this.headerString());
-  },
+
   // set should take the x and y of the pixel and the color as 3 value array
   // set's the bits in the buffer to be sent to the given color array
   set: function(x,y, color){
@@ -70,12 +69,6 @@ module.exports = {
     var x = x;
     var y = y;
 
-
-  //  if (x >= this.width || y >= this.height || x < 0 || y < 0) {return;}
-  //to make all the black ones not clear:
-    //if(color === [0,0,0]){
-      //color = [1,1,1]
-    //}
     var offset = (x + y * this.width) * 3 + this.headerString().length;
 
   //  console.log(offset)
