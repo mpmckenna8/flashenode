@@ -2,7 +2,7 @@ var nb = require('../index.js');
 //nb.hostname = "localhost"
 
 nb.init();
-nb.width = 5
+nb.width = 25
 
 //nb.height = 15;
 //nb.width = 5;

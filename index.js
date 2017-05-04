@@ -44,18 +44,6 @@ module.exports = {
     })
 
   },
-  convert: function(imgpath){
-    var srcData = fs.readFileSync(imgpath);
-
-    var content = imagemagick.convert({
-      srcData: srcData,
-      width: this.width,
-      height: this.height,
-      format: 'ppm'
-    })
-    this.data = content;
-
-  },
   init: function(){
     //this.data = new Buffer(  this.headlen + this.height * this.width* 3 );
     this.writeHeader();
