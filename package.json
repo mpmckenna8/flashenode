@@ -1,6 +1,6 @@
 {
   "name": "flaschenode",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Makes it easy for people who like js to interact with the flaschen-taschen",
   "main": "index.js",
   "directories": {
