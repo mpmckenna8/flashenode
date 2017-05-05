@@ -1,7 +1,7 @@
 var nb = require('../index.js');
 //nb.hostname = "localhost"
 
-nb.init();
+nb.writeHeader();
 nb.width = 25
 
 //nb.height = 15;
@@ -15,8 +15,6 @@ nb.data = datb;
 datb.write(nb.headerString(), 0);
 var starfoo = datb.length - nb.footerString().length
 datb.write(nb.footerString(), starfoo);
-
-//nb.data = datb;
 
 var color = [5, 55, 55];
 for(i=0; i < nb.width; i++){
