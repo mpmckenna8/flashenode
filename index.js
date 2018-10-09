@@ -20,7 +20,7 @@ module.exports = {
     },
 
   footbuf: function(){
-    return new Buffer(footerString())
+    return Buffer.from(footerString())
   },
   writeHeader: function(){
     this.data.write(this.headerString());
@@ -33,9 +33,9 @@ module.exports = {
     const client = dgram.createSocket('udp4');
     // decided to just have the data assigned when this function is called
   //  this.data.write(this.footerString, footoff)
-    console.log('our data', this.data);
+  //  console.log('our data', this.data.toString());
 
-    client.send(this.data, this.port, this.hostname, function (err, bytes) {
+    client.send(this.data, this.port, this.hostname, (err, bytes) => {
       if (err) console.log(err);
         console.log('UDP message sent to ' + this.hostname + ':' + this.port);
         console.log(bytes +  " long")
@@ -44,7 +44,7 @@ module.exports = {
     })
 
   },
-  init: function(){
+  initBuffer: function(){
     //this.data = new Buffer(  this.headlen + this.height * this.width* 3 );
     this.writeHeader();
 
