@@ -9,6 +9,7 @@ module.exports = {
   height: 35,
   width: 45,
   layer: 11,
+  verbose: false,
   // a function which will return a nice headerstring based on the currently set
   // width and height
   headerString: function(){
@@ -37,8 +38,10 @@ module.exports = {
 
     client.send(this.data, this.port, this.hostname, (err, bytes) => {
       if (err) console.log(err);
-        //console.log('UDP message sent to ' + this.hostname + ':' + this.port);
-        //console.log(bytes +  " long")
+      if(verbose) {
+        console.log('UDP message sent to ' + this.hostname + ':' + this.port);
+        console.log(bytes +  " long")
+      }
 
       client.close()
     })
