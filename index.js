@@ -37,8 +37,8 @@ module.exports = {
 
     client.send(this.data, this.port, this.hostname, (err, bytes) => {
       if (err) console.log(err);
-        console.log('UDP message sent to ' + this.hostname + ':' + this.port);
-        console.log(bytes +  " long")
+        //console.log('UDP message sent to ' + this.hostname + ':' + this.port);
+        //console.log(bytes +  " long")
 
       client.close()
     })
