@@ -38,14 +38,13 @@ module.exports = {
 
     client.send(this.data, this.port, this.hostname, (err, bytes) => {
       if (err) console.log(err);
-      if(verbose) {
+      if( this.verbose ) {
+        let thinger = 'ahh'
         console.log('UDP message sent to ' + this.hostname + ':' + this.port);
-        console.log(bytes +  " long")
+        //console.log(bytes +  " long")
       }
-
       client.close()
     })
-
   },
   initBuffer: function(){
     //this.data = new Buffer(  this.headlen + this.height * this.width* 3 );
