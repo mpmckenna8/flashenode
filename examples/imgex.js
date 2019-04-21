@@ -3,32 +3,32 @@
 // to run this requires imagemagick-native to be installed
 
 var flaschen = require('../index.js');
-var imagemagick = require('imagemagick-native');
-var fs = require('fs')
-var file = "./images/elephant.jpeg" //elephant.jpeg"
 
-//flaschen.hostname = 'localhost'
-// uncomment to sent to the highest layer
- flaschen.layer = 14
 
-const footer = Buffer.from(flaschen.footerString())
+var Jimp = require('jimp')
 
-// read the picture into a buffer.
-var srcData = fs.readFileSync(file);
+flaschen.initBuffer();
 
-// convert the image to a ppm for the flaschen-taschen
-var content = imagemagick.convert({
-  srcData: srcData,
-  width: 45,
-  height: 35,
-  format: 'ppm'
-})
 
-var totlen = footer.length + content.length;
-// concatenate the image and the footer
-var allcon = Buffer.concat([content, footer], totlen)
+Jimp.read('./images/elephant.jpeg', (err, img) => {
+  if (err) throw err;
+  let x = 45, y=35;
 
-flaschen.data = allcon;
+  img
+    .resize(45, 35) // resize
+    .quality(20) // set JPEG quality
+  //  .greyscale() // set greyscale
+    //.write('lena-small-bw.jpg'); // save
 
-// Send the data to the flaschen-taschen
-flaschen.show()
+
+    for( let xi = 0; xi < x; xi++) {
+      for( let yi = 0; yi <y ; yi++) {
+
+        let pixi = Jimp.intToRGBA(img.getPixelColor(xi, yi));
+        flaschen.set(xi, yi, [pixi.r, pixi.g,pixi.b])
+      //  console.log('pixel color ,', pixi)
+
+        }
+    }
+    flaschen.show()
+});
