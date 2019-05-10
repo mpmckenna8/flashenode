@@ -12,8 +12,6 @@ Elephant image from https://pixabay.com/en/three-d-3d-abstract-art-elephant-1781
 ## Usage:
 
 For some examples of how to use this module look in the tests directory, I think
-the tests/singular.js file should even run if you don't have imagemagick
-installed already.
 
 But i don't think npm will let you install the package without [imagemagick](https://www.imagemagick.org/script/index.php) so
 make sure you have that installed.
@@ -35,33 +33,24 @@ So to just send a simple image:
 
 ```javascript
 
-var flaschen = require('flaschenode');
-var imagemagick = require('imagemagick-native');
-var fs = require('fs')
-var file = "./node_modules/flaschenode/elephant.jpeg"
+// simple example to make all the pixels on the flaschen taschen to light up white (some might not have all rg and b working tho)
 
-//flaschen.hostname = 'localhost';
-// layers go from 1-15 so uncomment the following and you'll be on top
-//flaschen.layer = 15;
+var flaschen = require('flashenode');
 
-const footer = new Buffer(flaschen.footerString())
+// uncomment if sending to local server
+//flaschen.hostname = "localhost"
+flaschen.initBuffer();
 
-var srcData = fs.readFileSync(file);
 
-var content = imagemagick.convert({
-  srcData: srcData,
-  width: 45,
-  height: 35,
-  format: 'ppm'
-})
+var color = [255, 255, 255];
 
-var totlen = footer.length + content.length;
+for(i=0; i < flaschen.width; i++){
+  for(j=0; j < flaschen.height; j++){
+    flaschen.set(i, j, color)
+  }
+}
 
-var allcon = Buffer.concat([content, footer], totlen)
+flaschen.show();
 
-flaschen.data = allcon;
-
-// Send the data to the flaschen-taschen
-flaschen.show()
 
 ```
